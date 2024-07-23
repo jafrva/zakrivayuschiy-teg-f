@@ -1,1 +1,13 @@
-/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+    --main-font: 'Inter-Variable', Arial, sans-serif;
+    --accent-font: 'PressStart2P-Regular', Arial, sans-serif;
+    --weight-subtitle: 700;
+    --weight-body: 400;
+    --bg-color: rgba(255, 255, 255, 1);
+    --accent-color: rgba(0, 0, 0, 1);
+    --linear-gradient-strips: #d3d3d3;
+    --linear-gradient-one: #e7e7e7;
+    --linear-gradient-two: #1a1a1a;
+    --button-animation: rgba(255, 255, 255, 1);
+    --sparks-color: rgba(255, 0, 0, 1);
+}
