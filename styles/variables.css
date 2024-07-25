@@ -1,6 +1,6 @@
 :root {
     --main-font: 'Inter-Variable', Arial, sans-serif;
-    --accent-font: 'PressStart2P-Regular', Arial, sans-serif;
+    --accent-font: 'PressStart2P', fantasy;
     --weight-subtitle: 700;
     --weight-body: 400;
     --bg-color: rgba(255, 255, 255, 1);

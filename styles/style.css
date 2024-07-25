@@ -33,7 +33,7 @@
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   color: var(--accent-color);
   line-height: 1;
-  padding-block-start: 136px;
+  padding-block-start: clamp(120px, 114.3662px + 1.5023vw, 136px);
   padding-block-end: 20px;
 }
 
@@ -50,7 +50,7 @@
   font-family: var(--main-font);
   font-size: 18px;
   line-height: 1.2;
-  font-weight: var(--weight-subtitle);
+  font-variation-settings: "wght" var(--weight-subtitle);
   color: var(--accent-color);
   background-color: var(--bg-color);
   padding: 3px 10px 3px 10px;
@@ -60,8 +60,8 @@
 .body-text {
   font-family: var(--main-font);
   font-size: 18px;
-  font-weight: 400;
-  line-height: 21px;
+  font-variation-settings: "wght" var(--weight-body);
+  line-height: 1.2;
   color: var(--accent-color);
 }
 
@@ -72,16 +72,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  block-size: min(100%, 368px);
   border: 2px solid var(--accent-color);
   margin: 0 auto;
   margin-block-end: 100px;
   margin-block-start: 100px;
 }
 
+.box-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+}
+
+img {
+  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .watermark {
   position: absolute;
-  inset-block-start: clamp(54px, 53.2958px + 0.1878vw, 56px);
+  inset-block-start: 25px;
   inset-inline-end: clamp(13px, 8.7746px + 1.1268vw, 25px);
   font-size: 14px;
   font-family: var(--accent-font);
@@ -115,6 +126,7 @@
   transition: 0.3s;
   animation-timing-function: ease;
   position: relative;
+  font-size: 14px;
 }
 
 .theme-menu__button:disabled {
@@ -141,8 +153,8 @@
   display: block;
   width: 100%;
   height: 2px;
-  background: var(--accent-color);
   transform: scaleX(0);
+  background: var(--accent-color);
   transition: transform 0.3s ease;
   transform-origin: top left;
 }
@@ -160,11 +172,21 @@
   content: "▶";
   position: absolute;
   left: -20px;
+  top: 0px;
   animation: arrow 1s infinite ease-in-out;
+  inline-size: 14px;
+  block-size: 14px;
+  background: transparent;
 }
 
-li:not(:last-child) {
-  padding-block-end: 14px;
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.theme-menu__item {
+  max-block-size: 14px;
 }
 
 .section {
@@ -174,7 +196,6 @@ li:not(:last-child) {
   margin: 0 auto;
   border: 2px solid var(--accent-color);
   background-color: var(--bg-color);
-  position: relative;
 }
 
 .main {
@@ -193,46 +214,45 @@ p + p {
   border-block-start: 2px solid var(--accent-color);
 }
 
-.butttons-like {
+.buttons-like {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 8px;
   max-block-size: 38px;
 }
 
 .button__text {
   font-family: var(--accent-font);
   font-size: 14px;
-  line-height: 1.1;
+  line-height: 1;
   font-weight: 400;
   z-index: 2;
   color: var(--button-animation);
   mix-blend-mode: difference;
 }
 
-.card__like-button {
+.button {
+  font-family: var(--accent-font);
+  font-size: 14px;
+  line-height: 1;
   cursor: pointer;
   border: 2px solid var(--accent-color);
-  background-color: transparent;
-  block-size: 38px;
-  inline-size: 130px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
+  background-color: var(--bg-color);
 }
 
-.card__like-button:focus {
+.button:focus {
   outline: none;
 }
 
-.card__like-button:focus-visible {
+.button:focus-visible {
   box-shadow: 2px 2px var(--accent-color);
+  transition: transform 0.3s ease;
 }
 
-.card__like-button::before {
+.button::before {
   position: absolute;
   content: "";
   top: 0;
@@ -245,64 +265,53 @@ p + p {
   transform-origin: top left;
 }
 
-.card__like-button:hover::before {
+.button:hover::before {
   transition: transform 0.5s ease-in-out;
   transform: scaleX(1);
 }
 
+.card__like-button {
+  padding-block: 10px;
+  padding-inline: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-inline-size: 130px;
+}
+
 .card__icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   background-color: transparent;
-  padding: 6px 0 0 0;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--accent-color);
+  transition: transform 0.3s ease;
 }
 
 .save-button {
-  cursor: pointer;
-  border: 2px solid var(--accent-color);
-  background-color: var(--bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   margin: 0 auto;
-  margin-block-start: 50px;
+  margin-block-start: 2px;
   margin-block-end: clamp(100px, 98.9437px + 0.2817vw, 103px);
-  block-size: 51px;
-  inline-size: 335px;
-  position: relative;
-}
-
-.save-button:focus {
-  outline: none;
-}
-
-.save-button:focus-visible {
-  box-shadow: 2px 2px var(--accent-color);
-  transition: transform 0.3s ease;
-}
-
-.save-button::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--accent-color);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-  transform-origin: top left;
-}
-
-.save-button:hover::before {
-  transition: transform 0.5s ease-in-out;
-  transform: scaleX(1);
+  padding-block: 15px;
+  padding-inline: 19px;
 }
 
 .save-svg {
   inline-size: 21px;
   block-size: 21px;
-  z-index: 2;
+  z-index: 3;
   color: var(--button-animation);
   mix-blend-mode: difference;
 }
@@ -324,12 +333,12 @@ p + p {
 
 .like-icon:hover .core {
   fill: var(--accent-color);
-  transition: fill 0.3s linear 0.05s;
+  transition: fill 0.3s linear;
 }
 
 .like-icon:hover .main-body {
   fill: var(--accent-color);
-  transition: fill 0.3s linear;
+  transition: fill 0.3s linear 0.05s;
 }
 
 .like-icon:active .core {
@@ -375,10 +384,12 @@ p + p {
   padding: 30px;
   max-inline-size: 353px;
   flex-direction: column;
+  border: 2px solid var(--accent-color);
 }
 
 .modal-text {
   font-family: var(--accent-font);
+  color: var(--accent-color);
   text-transform: uppercase;
   line-height: 1.5;
   font-size: 14px;
@@ -393,12 +404,14 @@ p + p {
 }
 
 .modal-button {
-  inline-size: 100%;
-  margin: 0;
-  max-block-size: 38px;
+  padding-block: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .modal-svg {
+  color: var(--accent-color);
   flex-shrink: 0;
   inline-size: 39px;
   block-size: 39px;
