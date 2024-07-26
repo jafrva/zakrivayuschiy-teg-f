@@ -183,6 +183,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  padding-inline-start: 25px;
 }
 
 .theme-menu__item {
@@ -241,6 +242,7 @@ p + p {
   border: 2px solid var(--accent-color);
   position: relative;
   background-color: var(--bg-color);
+  transition: transform 0.3s ease;
 }
 
 .button:focus {
@@ -249,7 +251,6 @@ p + p {
 
 .button:focus-visible {
   box-shadow: 2px 2px var(--accent-color);
-  transition: transform 0.3s ease;
 }
 
 .button::before {
@@ -261,12 +262,11 @@ p + p {
   height: 100%;
   background-color: var(--accent-color);
   transform: scaleX(0);
-  transition: transform 0.3s ease;
   transform-origin: top left;
+  transition: transform 0.5s ease-in-out;
 }
 
 .button:hover::before {
-  transition: transform 0.5s ease-in-out;
   transform: scaleX(1);
 }
 
@@ -285,6 +285,7 @@ p + p {
   justify-content: center;
   border: none;
   background-color: transparent;
+  transition: transform 0.3s ease;
 }
 
 .card__icon-button:focus {
@@ -293,7 +294,6 @@ p + p {
 
 .card__icon-button:focus-visible {
   border: 2px solid var(--accent-color);
-  transition: transform 0.3s ease;
 }
 
 .save-button {
